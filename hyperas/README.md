@@ -3,7 +3,7 @@ deep learning做到後面都剩下調參數
 
 而參數又不是那麼容易調整，是個廢力又廢時的工作
 
-這邊將介紹透過Hyperas這個套件，自動選擇符合Model最好的參數
+這邊將介紹透過Hyperas這個套件，自動選擇符合model最好的參數
 
 ## 安裝Hyperas
 使用`pip`進行安裝
@@ -135,7 +135,12 @@ best_run, best_model = optim.minimize(model=create_model,
 
 print("Evalutation of best performing model:")
 print(best_model.evaluate(X_test, Y_test))
+print(best_run)
 ```
+
+`optim.minimize()`會回傳
+* best_run: 最好的參數組合
+* best_model: 最好的model
 
 ## 最後
 1. Hyperas好像跟註解很不合，在跑程式時需把註解都刪掉，以免發生錯誤
