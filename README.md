@@ -4,3 +4,6 @@
 ## Hyperparameter optimization
 * [hyperas](hyperas/README.md)
 
+## Visualization
+* [Hualos](hualos/README.md)
+
