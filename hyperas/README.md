@@ -82,9 +82,9 @@ def create_model(X_train, Y_train, X_test, Y_test):
     return {'loss': -acc, 'status': STATUS_OK, 'model': model}
 ```
 
-原本Dropout需要傳入一個0~1的機率
+原本Dropout需要傳入一個0-1的機率
 但我們這邊不直接指定一個數字
-而是透過`uniform`幫我們產生一個0~1的數字
+而是透過`uniform`幫我們產生一個0-1的數字
 
 ```python
 model.add(Dropout({{uniform(0, 1)}}))
