@@ -1,6 +1,8 @@
 # Hyperas - 在Keras中自動選擇超參數
 deep learning做到後面都剩下調參數
+
 而參數又不是那麼容易調整，是個廢力又廢時的工作
+
 這邊將介紹透過Hyperas這個套件，自動選擇符合Model最好的參數
 
 ## 安裝Hyperas
@@ -52,6 +54,7 @@ def data():
 ```
 ## 定義Model
 這邊除了定義Model外，還需完成training及testing，所以需把data傳進來
+
 最後回傳一個dictionary，其中包含：
 * loss: Hyperas會去選擇最小值的model
 * status: 直接回傳`STATUS_OK`
@@ -83,7 +86,9 @@ def create_model(X_train, Y_train, X_test, Y_test):
 ```
 
 原本Dropout需要傳入一個0-1的機率
+
 但我們這邊不直接指定一個數字
+
 而是透過`uniform`幫我們產生一個0-1的數字
 
 ```python
@@ -91,6 +96,7 @@ model.add(Dropout({{uniform(0, 1)}}))
 ```
 
 Dense擇是透過`choice`
+
 傳入我們要哪些值
 
 ```python
@@ -98,9 +104,13 @@ model.add(Dense({{choice([256, 512, 1024])}}))
 ```
 
 最後回傳的dictionary
+
 我們目標是選擇最高的accuracy的model
+
 但因為Huperas他會去選擇`loss`這個value **最小的** 的model
+
 所以將accuracy直接變 **負號**
+
 再丟給`loss`
 
 ```python
@@ -142,6 +152,5 @@ best_run, best_model = optim.minimize(model=create_model,
 
 ## 參考
 https://github.com/maxpumperla/hyperas
-
 
 
